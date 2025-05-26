@@ -113,9 +113,9 @@ const cli = meow(
                                with all other flags, except for --model.
 
   Examples
-    $ codex "Write and run a python program that prints ASCII art"
-    $ codex -q "fix build issues"
-    $ codex completion bash
+    $ jarvis "deploy quantum-resistant authentication system"
+    $ jarvis -q "optimize reactor core efficiency"
+    $ jarvis completion bash
 `,
   {
     importMeta: import.meta,
@@ -213,6 +213,10 @@ const cli = meow(
         description: `Run in full-context editing approach. The model is given the whole code
           directory as context and performs changes in one go without acting.`,
       },
+      voice: {
+        type: "boolean",
+        description: "Enable voice interface (placeholder)",
+      },
     },
   },
 );
@@ -221,11 +225,17 @@ const cli = meow(
 // Global flag handling
 // ---------------------------------------------------------------------------
 
+// Handle --voice flag
+if (cli.flags.voice) {
+  console.log("🔊 Voice interface coming soon. To enable, hook ElevenLabs into the output stream.");
+  process.exit(0);
+}
+
 // Handle 'completion' subcommand before any prompting or API calls
 if (cli.input[0] === "completion") {
   const shell = cli.input[1] || "bash";
   const scripts: Record<string, string> = {
-    bash: `# bash completion for codex
+    bash: `# bash completion for jarvis
 _codex_completion() {
   local cur
   cur="\${COMP_WORDS[COMP_CWORD]}"
@@ -524,7 +534,7 @@ const additionalWritableRoots: ReadonlyArray<string> = (
 
 // For --quiet, run the cli without user interactions and exit.
 if (cli.flags.quiet) {
-  process.env["CODEX_QUIET_MODE"] = "1";
+  process.env["JARVIS_QUIET_MODE"] = "1";
   if (!prompt || prompt.trim() === "") {
     // eslint-disable-next-line no-console
     console.error(

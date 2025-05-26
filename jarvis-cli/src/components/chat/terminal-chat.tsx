@@ -145,6 +145,7 @@ export default function TerminalChat({
   fullStdout,
 }: Props): React.ReactElement {
   const notify = Boolean(config.notify);
+  const [showSplash, setShowSplash] = useState<boolean>(!process.env.JARVIS_QUIET_MODE);
   const [model, setModel] = useState<string>(config.model);
   const [provider, setProvider] = useState<string>(config.provider || "openai");
   const [lastResponseId, setLastResponseId] = useState<string | null>(null);
@@ -467,6 +468,31 @@ export default function TerminalChat({
         session={viewRollout.session}
         items={viewRollout.items}
       />
+    );
+  }
+
+  // Show splash screen for 800ms
+  useEffect(() => {
+    if (showSplash) {
+      const timer = setTimeout(() => {
+        setShowSplash(false);
+      }, 800);
+      return () => clearTimeout(timer);
+    }
+  }, [showSplash]);
+
+  if (showSplash) {
+    return (
+      <Box flexDirection="column" alignItems="center" justifyContent="center">
+        <Text>{'     _   _   ____  __     _____ ____  '}</Text>
+        <Text>{'    | | / \\ |  _ \\ \\ \\   / /_ _/ ___| '}</Text>
+        <Text>{' _  | |/ _ \\| |_) | \\ \\ / / | |\\___ \\ '}</Text>
+        <Text>{'| |_| / ___ \\  _ <   \\ V /  | | ___) |'}</Text>
+        <Text>{' \\___/_/   \\_\\_| \\_\\  \\_/  |___|____/ '}</Text>
+        <Text>{''}</Text>
+        <Text>{'J.A.R.V.I.S. – Mission Control CLI'}</Text>
+        <Text dimColor>{'Initializing neural interface...'}</Text>
+      </Box>
     );
   }
 
