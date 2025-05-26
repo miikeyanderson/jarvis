@@ -1,16 +1,16 @@
 {
-  "name": "codex-monorepo",
+  "name": "jarvis-monorepo",
   "private": true,
   "description": "Tools for repo-wide maintenance.",
   "scripts": {
-    "release": "pnpm --filter @openai/codex run release",
+    "release": "pnpm --filter jarvis-cli run release",
     "format": "prettier --check *.json *.md .github/workflows/*.yml",
     "format:fix": "prettier --write *.json *.md .github/workflows/*.yml",
-    "build": "pnpm --filter @openai/codex run build",
-    "test": "pnpm --filter @openai/codex run test",
-    "lint": "pnpm --filter @openai/codex run lint",
-    "lint:fix": "pnpm --filter @openai/codex run lint:fix",
-    "typecheck": "pnpm --filter @openai/codex run typecheck",
+    "build": "pnpm --filter jarvis-cli run build",
+    "test": "pnpm --filter jarvis-cli run test",
+    "lint": "pnpm --filter jarvis-cli run lint",
+    "lint:fix": "pnpm --filter jarvis-cli run lint:fix",
+    "typecheck": "pnpm --filter jarvis-cli run typecheck",
     "changelog": "git-cliff --config cliff.toml --output CHANGELOG.ignore.md $LAST_RELEASE_TAG..HEAD",
     "prepare": "husky",
     "husky:add": "husky add"
@@ -44,8 +44,8 @@
     ".github/workflows/*.yml": "prettier --write",
     "**/*.{js,ts,tsx}": [
       "prettier --write",
-      "pnpm --filter @openai/codex run lint",
-      "cd codex-cli && pnpm run typecheck"
+      "pnpm --filter jarvis-cli run lint",
+      "cd jarvis-cli && pnpm run typecheck"
     ]
   },
   "packageManager": "pnpm@10.8.1"

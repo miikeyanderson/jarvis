@@ -1,8 +1,9 @@
 {
-  "name": "@openai/codex",
+  "name": "jarvis-cli",
   "version": "0.0.0-dev",
   "license": "Apache-2.0",
   "bin": {
+    "jarvis": "bin/jarvis.js",
     "codex": "bin/codex.js"
   },
   "type": "module",
@@ -84,6 +85,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/openai/codex"
+    "url": "https://github.com/jarvis/jarvis"
   }
 }

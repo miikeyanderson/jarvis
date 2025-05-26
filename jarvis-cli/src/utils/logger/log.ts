@@ -71,11 +71,11 @@ function now() {
 let logger: Logger;
 
 /**
- * Creates a .log file for this session, but also symlinks codex-cli-latest.log
+ * Creates a .log file for this session, but also symlinks jarvis-cli-latest.log
  * to the current log file so you can reliably run:
  *
- * - Mac/Windows: `tail -F "$TMPDIR/oai-codex/codex-cli-latest.log"`
- * - Linux: `tail -F ~/.local/oai-codex/codex-cli-latest.log`
+ * - Mac/Windows: `tail -F "$TMPDIR/jarvis/jarvis-cli-latest.log"`
+ * - Linux: `tail -F ~/.local/jarvis/jarvis-cli-latest.log`
  */
 export function initLogger(): Logger {
   if (logger) {
@@ -89,20 +89,20 @@ export function initLogger(): Logger {
   const isWin = process.platform === "win32";
 
   // On Mac and Windows, os.tmpdir() returns a user-specific folder, so prefer
-  // it there. On Linux, use ~/.local/oai-codex so logs are not world-readable.
+  // it there. On Linux, use ~/.local/jarvis so logs are not world-readable.
   const logDir =
     isMac || isWin
-      ? path.join(os.tmpdir(), "oai-codex")
-      : path.join(os.homedir(), ".local", "oai-codex");
+      ? path.join(os.tmpdir(), "jarvis")
+      : path.join(os.homedir(), ".local", "jarvis");
   fsSync.mkdirSync(logDir, { recursive: true });
-  const logFile = path.join(logDir, `codex-cli-${now()}.log`);
+  const logFile = path.join(logDir, `jarvis-cli-${now()}.log`);
   // Write the empty string so the file exists and can be tail'd.
   fsSync.writeFileSync(logFile, "");
 
-  // Symlink to codex-cli-latest.log on UNIX because Windows is funny about
+  // Symlink to jarvis-cli-latest.log on UNIX because Windows is funny about
   // symlinks.
   if (!isWin) {
-    const latestLink = path.join(logDir, "codex-cli-latest.log");
+    const latestLink = path.join(logDir, "jarvis-cli-latest.log");
     try {
       fsSync.symlinkSync(logFile, latestLink, "file");
     } catch (err: unknown) {

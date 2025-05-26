@@ -19,7 +19,7 @@ import { homedir } from "os";
 import { dirname, join, extname, resolve as resolvePath } from "path";
 
 // ---------------------------------------------------------------------------
-// User‑wide environment config (~/.codex.env)
+// User‑wide environment config (~/.jarvis.env)
 // ---------------------------------------------------------------------------
 
 // Load a user‑level dotenv file **after** process.env and any project‑local
@@ -28,13 +28,13 @@ import { dirname, join, extname, resolve as resolvePath } from "path";
 // the precedence order becomes:
 //   1. Explicit environment variables
 //   2. Project‑local .env (handled in cli.tsx)
-//   3. User‑wide ~/.codex.env (loaded here)
+//   3. User‑wide ~/.jarvis.env (loaded here)
 // This guarantees that users can still override the global key on a per‑project
 // basis while enjoying the convenience of a persistent default.
 
 // Skip when running inside Vitest to avoid interfering with the FS mocks used
 // by tests that stub out `fs` *after* importing this module.
-const USER_WIDE_CONFIG_PATH = join(homedir(), ".codex.env");
+const USER_WIDE_CONFIG_PATH = join(homedir(), ".jarvis.env");
 
 const isVitest =
   typeof (globalThis as { vitest?: unknown }).vitest !== "undefined";
@@ -52,7 +52,7 @@ export const DEFAULT_INSTRUCTIONS = "";
 export const DEFAULT_SHELL_MAX_BYTES = 1024 * 10; // 10 KB
 export const DEFAULT_SHELL_MAX_LINES = 256;
 
-export const CONFIG_DIR = join(homedir(), ".codex");
+export const CONFIG_DIR = join(homedir(), ".jarvis");
 export const CONFIG_JSON_FILEPATH = join(CONFIG_DIR, "config.json");
 export const CONFIG_YAML_FILEPATH = join(CONFIG_DIR, "config.yaml");
 export const CONFIG_YML_FILEPATH = join(CONFIG_DIR, "config.yml");
@@ -221,7 +221,7 @@ export type AppConfig = {
 export const PRETTY_PRINT = Boolean(process.env["PRETTY_PRINT"] || "");
 
 // ---------------------------------------------------------------------------
-// Project doc support (AGENTS.md / codex.md)
+// Project doc support (AGENTS.md / jarvis.md)
 // ---------------------------------------------------------------------------
 
 export const PROJECT_DOC_MAX_BYTES = 32 * 1024; // 32 kB

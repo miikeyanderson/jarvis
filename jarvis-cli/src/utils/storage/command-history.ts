@@ -4,7 +4,7 @@ import fs from "fs/promises";
 import os from "os";
 import path from "path";
 
-const HISTORY_FILE = path.join(os.homedir(), ".codex", "history.json");
+const HISTORY_FILE = path.join(os.homedir(), ".jarvis", "history.json");
 const DEFAULT_HISTORY_SIZE = 10_000;
 
 // Regex patterns for sensitive commands that should not be saved.

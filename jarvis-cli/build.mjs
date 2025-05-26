@@ -36,7 +36,7 @@ const ignoreReactDevToolsPlugin = {
 
 const isDevBuild =
   process.argv.includes("--dev") ||
-  process.env.CODEX_DEV === "1" ||
+  process.env.JARVIS_DEV === "1" ||
   process.env.NODE_ENV === "development";
 
 const plugins = [ignoreReactDevToolsPlugin];

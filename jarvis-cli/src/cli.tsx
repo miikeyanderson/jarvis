@@ -7,7 +7,7 @@ if (major < 22) {
   // eslint-disable-next-line no-console
   console.error(
     "\n" +
-      "Codex CLI requires Node.js version 22 or newer.\n" +
+      "Jarvis CLI requires Node.js version 22 or newer.\n" +
       `You are running Node.js v${process.versions.node}.\n` +
       "Please upgrade Node.js: https://nodejs.org/en/download/\n",
   );
@@ -55,7 +55,7 @@ import os from "os";
 import path from "path";
 import React from "react";
 
-// Call this early so `tail -F "$TMPDIR/oai-codex/codex-cli-latest.log"` works
+// Call this early so `tail -F "$TMPDIR/jarvis/jarvis-cli-latest.log"` works
 // immediately. This must be run with DEBUG=1 for logging to work.
 initLogger();
 
@@ -67,8 +67,8 @@ initLogger();
 const cli = meow(
   `
   Usage
-    $ codex [options] <prompt>
-    $ codex completion <bash|zsh|fish>
+    $ jarvis [options] <prompt>
+    $ jarvis completion <bash|zsh|fish>
 
   Options
     --version                       Print version and exit

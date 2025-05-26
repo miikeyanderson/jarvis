@@ -1,4 +1,4 @@
-export const ORIGIN = "codex_cli_ts";
+export const ORIGIN = "jarvis_cli_ts";
 
 export type TerminalChatSession = {
   /** Globally unique session identifier */
