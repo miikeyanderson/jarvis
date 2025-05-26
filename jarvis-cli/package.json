@@ -1,10 +1,12 @@
 {
   "name": "jarvis-cli",
   "version": "0.0.0-dev",
+  "description": "J.A.R.V.I.S. – Mission Control CLI for AI-powered development operations",
   "license": "Apache-2.0",
   "bin": {
     "jarvis": "bin/jarvis.js",
-    "codex": "bin/codex.js"
+    "codex": "bin/codex.js",
+    "jarvis-voice": "bin/jarvis-voice.js"
   },
   "type": "module",
   "engines": {
@@ -46,6 +48,7 @@
     "open": "^10.1.0",
     "openai": "^4.95.1",
     "package-manager-detector": "^1.2.0",
+    "python-shell": "^5.0.0",
     "react": "^18.2.0",
     "shell-quote": "^1.8.2",
     "strip-ansi": "^7.1.0",
